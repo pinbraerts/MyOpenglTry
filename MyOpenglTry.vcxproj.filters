@@ -29,9 +29,6 @@
     <Image Include="A_hint.png">
       <Filter>Файлы ресурсов</Filter>
     </Image>
-    <Image Include="DIDESLExample.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h">

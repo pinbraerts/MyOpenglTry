@@ -135,7 +135,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="A_hint.png" />
-    <Image Include="DIDESLExample.png" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
