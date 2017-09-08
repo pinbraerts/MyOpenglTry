@@ -102,7 +102,7 @@ void Player::load(const char imageFile[]) {
 	glGenTextures(1, &texture);
 	if (texture == 0) {
 		SOIL_free_image_data(image);
-		std::runtime_error("Failed to generate texture!");
+		throw std::runtime_error("Failed to generate texture!");
 	}
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);

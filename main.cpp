@@ -1,3 +1,4 @@
+#if 0
 #include <iostream>
 
 #include "Game.h"
@@ -43,6 +44,39 @@ int main() {
 	camera.translate(0, 0, 3);
 	Game::render.connect(a, &Player::render);
 	Game::render.connect(b, &Player::render);
-	Game::cursorMove += cursor;
+	Game::Input::Cursor::moved += cursor;
 	return Game::run();
 }
+#else
+
+#include <iostream>
+#include "GameObject.h"
+#include "Input.h"
+using namespace Game;
+
+class MyGameObject : public GameObject, public Input::Hoverable {
+	void onMouseHover() override {
+		std::cout << "Object hovered with mouse!" << std::endl;
+	}
+};
+
+int main() {
+	try {
+		MyGameObject o1, o2;
+		o2.setShape<Oval>(1.40, 1.40);
+		Rectangle& sh = const_cast<Rectangle&>(o1.getShape());
+		sh.x = 0.5;
+		sh.y = 0.5;
+		std::cout << o1.getShape() << ' ' << o2.getShape() << std::endl;
+		std::cout << o1.getShape().collides(o2.getShape()) << ' ' << o2.getShape().contains({ 2, 2 }) << std::endl;
+		system("pause");
+		return 0;
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+		system("pause");
+		return 1;
+	}
+}
+
+#endif
